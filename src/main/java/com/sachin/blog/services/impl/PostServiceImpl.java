@@ -4,6 +4,7 @@ import com.sachin.blog.domain.PostStatus;
 import com.sachin.blog.domain.entities.Category;
 import com.sachin.blog.domain.entities.Post;
 import com.sachin.blog.domain.entities.Tag;
+import com.sachin.blog.domain.entities.User;
 import com.sachin.blog.repositories.PostRepository;
 import com.sachin.blog.services.CategoryService;
 import com.sachin.blog.services.PostService;
@@ -54,5 +55,13 @@ public class PostServiceImpl implements PostService {
         }
 
         return postRepository.findAllByStatus(PostStatus.PUBLISHED);
+    }
+
+    @Override
+    public List<Post> getDraftPosts(User user) {
+        return postRepository.findAllByAuthorAndStatus(
+                user,
+                PostStatus.DRAFT
+        );
     }
 }

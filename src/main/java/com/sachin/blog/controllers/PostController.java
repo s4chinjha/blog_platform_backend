@@ -2,14 +2,13 @@ package com.sachin.blog.controllers;
 
 import com.sachin.blog.domain.dtos.PostDto;
 import com.sachin.blog.domain.entities.Post;
+import com.sachin.blog.domain.entities.User;
 import com.sachin.blog.mappers.PostMapper;
 import com.sachin.blog.services.PostService;
+import com.sachin.blog.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -19,7 +18,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class PostController {
     private final PostService postService;
-
+    private final UserService userService;
     private final PostMapper postMapper;
 
     @GetMapping
@@ -28,6 +27,14 @@ public class PostController {
             @RequestParam(required = false)UUID tagId){
         List<Post> posts = postService.getAllposts(categoryId, tagId);
         List<PostDto> postDtos = posts.stream().map(postMapper::toDto).toList();
+        return ResponseEntity.ok(postDtos);
+    }
+
+    @GetMapping(path = "/drafts")
+    public ResponseEntity<List<PostDto>> getDrafts(@RequestAttribute UUID id){
+        User loggedInUser = userService.getUserById(id);
+        List<Post> draftPosts = postService.getDraftPosts(loggedInUser);
+        List<PostDto> postDtos = draftPosts.stream().map(postMapper::toDto).toList();
         return ResponseEntity.ok(postDtos);
     }
 }
