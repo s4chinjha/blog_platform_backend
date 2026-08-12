@@ -18,6 +18,14 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class TagServiceImpl implements TagService {
+    @Override
+    public List<Tag> getTagByIds(Set<UUID> ids) {
+        List<Tag> foundTags = tagRepository.findAllById(ids);
+        if(foundTags.size() != ids.size()){
+            throw new EntityNotFoundException("Not all specified tag IDs exist");
+        }
+        return foundTags;
+    }
 
     private final TagRepository tagRepository;
     @Override
