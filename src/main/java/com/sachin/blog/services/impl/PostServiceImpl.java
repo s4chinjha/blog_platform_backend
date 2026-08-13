@@ -33,6 +33,13 @@ public class PostServiceImpl implements PostService {
     private static final int WORDS_PER_MINUTE = 200;
 
     @Override
+    public Post getPost(UUID id) {
+        return postRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("Post does not exist with ID"+ id)
+        );
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public List<Post> getAllposts(UUID categoryId, UUID tagId) {
         if(categoryId!=null && tagId!=null){

@@ -70,6 +70,14 @@ public class PostController {
         Post updatedPost = postService.updatePost(id, updatePostRequest);
         PostDto updatedPostDto = postMapper.toDto(updatedPost);
         return ResponseEntity.ok(updatedPostDto);
+    }
 
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<PostDto> getPost(
+            @PathVariable UUID id
+    ){
+        Post post = postService.getPost(id);
+        PostDto postDto = postMapper.toDto(post);
+        return ResponseEntity.ok(postDto);
     }
 }

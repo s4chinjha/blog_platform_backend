@@ -19,7 +19,7 @@ import java.util.UUID;
 @Builder
 public class UpdatePostRequestDto {
 
-    @NotBlank(message = "Post Id is required")
+    @NotNull(message = "Post Id is required")
     private UUID id;
 
     @NotBlank(message = "Title is required")
@@ -38,5 +38,5 @@ public class UpdatePostRequestDto {
     private Set<UUID> tagIds = new HashSet<>();
 
     @NotNull(message = "Status is required")
-    private PostStatus postStatus;
+    private PostStatus status;
 }
