@@ -1,8 +1,10 @@
 package com.sachin.blog.controllers;
 
 import com.sachin.blog.domain.CreatePostRequest;
+import com.sachin.blog.domain.UpdatePostRequest;
 import com.sachin.blog.domain.dtos.CreatePostRequestDto;
 import com.sachin.blog.domain.dtos.PostDto;
+import com.sachin.blog.domain.dtos.UpdatePostRequestDto;
 import com.sachin.blog.domain.entities.Post;
 import com.sachin.blog.domain.entities.User;
 import com.sachin.blog.mappers.PostMapper;
@@ -10,7 +12,6 @@ import com.sachin.blog.services.PostService;
 import com.sachin.blog.services.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -58,5 +59,17 @@ public class PostController {
                 createdPostDto,
                 HttpStatus.CREATED
         );
+    }
+
+    @PutMapping(path = "/{id}")
+    public ResponseEntity<PostDto> updatePost(
+            @PathVariable UUID id,
+            @Valid @RequestBody UpdatePostRequestDto updatePostRequestDto
+            ){
+        UpdatePostRequest updatePostRequest = postMapper.toUpdatePostRequest(updatePostRequestDto);
+        Post updatedPost = postService.updatePost(id, updatePostRequest);
+        PostDto updatedPostDto = postMapper.toDto(updatedPost);
+        return ResponseEntity.ok(updatedPostDto);
+
     }
 }

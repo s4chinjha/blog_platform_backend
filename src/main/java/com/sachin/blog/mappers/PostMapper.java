@@ -1,8 +1,10 @@
 package com.sachin.blog.mappers;
 
 import com.sachin.blog.domain.CreatePostRequest;
+import com.sachin.blog.domain.UpdatePostRequest;
 import com.sachin.blog.domain.dtos.CreatePostRequestDto;
 import com.sachin.blog.domain.dtos.PostDto;
+import com.sachin.blog.domain.dtos.UpdatePostRequestDto;
 import com.sachin.blog.domain.entities.Post;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -17,4 +19,6 @@ public interface PostMapper {
     PostDto toDto(Post post);
 
     CreatePostRequest toCretaePostRequest(CreatePostRequestDto dto);
+
+    UpdatePostRequest toUpdatePostRequest(UpdatePostRequestDto dto);
 }
