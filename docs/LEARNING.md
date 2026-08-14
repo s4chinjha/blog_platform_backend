@@ -618,11 +618,3 @@ The next development stage is documented separately in:
 [`FUTURE-IMPROVEMENTS.md`](FUTURE-IMPROVEMENTS.md)
 
 The planned work includes authorization, resource ownership, automated testing, security improvements, and other production-oriented enhancements.
-
----
-
-## Reference
-
-The implementation was developed using the Devtiro Blog Platform guided build as the primary learning reference.
-
-See [`CREDITS.md`](CREDITS.md) for the project, documentation, and video references.
