@@ -325,4 +325,3 @@ Additional project documentation is available in [`docs/`](docs/):
 
 * [Learning Notes](docs/LEARNING.md) — implementation notes and concepts explored during development.
 * [Future Improvements](docs/FUTURE-IMPROVEMENTS.md) — planned extensions and engineering improvements.
-* [Credits](docs/CREDITS.md) — project references and learning resources.
