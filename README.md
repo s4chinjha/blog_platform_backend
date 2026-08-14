@@ -315,7 +315,7 @@ http://localhost:8888
 
 **Backend implementation complete.**
 
-The repository currently contains the core blog platform backend, including REST APIs, JPA relationships, PostgreSQL persistence, DTO mapping, validation, JWT authentication, Spring Security, and Docker-based local development.
+The repository contains the core blog platform backend, including REST APIs, JPA relationships, PostgreSQL persistence, DTO mapping, validation, JWT authentication, Spring Security, and Docker-based local development.
 
 Resource-level authorization is not currently implemented.
 
@@ -325,3 +325,4 @@ Additional project documentation is available in [`docs/`](docs/):
 
 * [Learning Notes](docs/LEARNING.md) — implementation notes and concepts explored during development.
 * [Future Improvements](docs/FUTURE-IMPROVEMENTS.md) — planned extensions and engineering improvements.
+* [Credits](docs/CREDITS.md) — project references.
